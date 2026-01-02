@@ -124,7 +124,7 @@ export default function Home() {
         </motion.div>
 
         {/* Scroll Indicator */}
-        <motion.div
+        {/* <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
           className="absolute bottom-10 left-1/2 -translate-x-1/2"
@@ -132,7 +132,7 @@ export default function Home() {
           <div className="h-10 w-6 rounded-full border border-zinc-700 p-1">
             <div className="h-2 w-full rounded-full bg-zinc-500" />
           </div>
-        </motion.div>
+        </motion.div> */}
       </section>
 
       {/* Mission & Vision Section (Teaser) */}

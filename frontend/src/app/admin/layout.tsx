@@ -12,6 +12,7 @@ import {
   ChevronRight,
   TrendingUp,
   Menu,
+  Loader2,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -42,9 +43,27 @@ export default function AdminLayout({
   const pathname = usePathname();
   const isLoginPage = pathname === "/admin/login";
   const [isOpen, setIsOpen] = useState(false);
+  const [isAuthChecked, setIsAuthChecked] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("admin_token");
+    if (!token && !isLoginPage) {
+      window.location.href = "/admin/login";
+    } else {
+      setIsAuthChecked(true);
+    }
+  }, [isLoginPage]);
 
   if (isLoginPage) {
     return <div className="min-h-screen bg-black">{children}</div>;
+  }
+
+  if (!isAuthChecked) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-black">
+        <Loader2 className="h-8 w-8 text-software animate-spin" />
+      </div>
+    );
   }
 
   const SidebarContent = () => (

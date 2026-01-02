@@ -137,7 +137,7 @@ export default function AdminPage() {
   useEffect(() => {
     const token = localStorage.getItem("admin_token");
     if (!token) {
-      router.push("/admin/login");
+      window.location.href = "/admin/login";
     } else {
       setIsAuthenticated(true);
       fetchAnalyticsData();
